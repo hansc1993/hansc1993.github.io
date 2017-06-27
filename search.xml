@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2017%2F06%2F24%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+    <title><![CDATA[数据类型]]></title>
+    <url>%2F2017%2F02%2F15%2F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%2F</url>
+    <content type="text"><![CDATA[基本数据类型 直接存储 存储在栈中,一次寻址 string:字符串 字符串都是用&quot;&quot;或&#39;&#39;引起来的,可以当做直接量 字符串是不可变的,一旦创建,值就不能改变,如果要改变字符串的值,首先要销毁原来的字符串,再用一个包含新值的字符串填充该变量,在垃圾回收之前会占用内存 number:数字最基本的数值字面量是十进制的整数,除了是禁止以外还有八进制和十六进制的字面值八进制字面值第一位必须是0,如果字面值中的数值超过了范围,前导0会被忽略,后面的数值会被当做十进制数值解析 八进制字面量在严格模式下会报错 数字加了引号后就是string类型 有一种特殊的数字:NaN(not a number) NaN表示非数值,即计算返回的不是一个数值,不会影响代码的执行isNaN方法可以判断是否是NaN1NaN == NaN; // false boolean:布尔类型 只有true和false两个字面值 区分大小写 空格字符串,0,NaN,null,undefined都是false undefined:未定义 与 null: 空undefined: 一个变量申明但没有返回值 数组中没有的值 没有接收到实参的形参,值是undefined return默认返回undefined null: null类型只有一个值:null由于设计时的bug,null类型属于object12console.log(typeof null); // objectnull == undefined; // true 包装数据类型 存储引用数据 把数据存储在堆中,把堆中的内存地址存储在栈中,二次寻址 包装数据类型在做比较的时候比较的是地址值 在javascript中除了基本数据类型,其他都属于对象 对于包装数据类型单独整理]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>javacript</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[javascript概念]]></title>
