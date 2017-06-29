@@ -48,4 +48,8 @@ js只需**解释就可以执行**,java需要先编译成字节码文件再执行
 **同步**,一个人有序做多件事情
 - defer
 **异步**,脚本延迟到**文档完全被解析和显示后再执行**,只有外部脚本可以用
+
+``` javascript
+<script src="" defer async="true"></script>	//async表示文件需要异步加载,ie不支持,所以要加上defer属性
+```
 <!--more-->
