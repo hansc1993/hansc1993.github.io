@@ -400,60 +400,40 @@
 
       
         
-          
-            <h3>面向对象:</h3>
-<p>可以创建自定义的类型,很好的<strong>支持继承和多态</strong></p>
-<h5>面向对象的语言:</h5>
-<ul>
+          <h3 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象:"></a>面向对象:</h3><p>可以创建自定义的类型,很好的<strong>支持继承和多态</strong></p>
+<h5 id="面向对象的语言"><a href="#面向对象的语言" class="headerlink" title="面向对象的语言:"></a>面向对象的语言:</h5><ul>
 <li>c++/java/c#</li>
 </ul>
-<h5>特征:</h5>
-<p><strong>封装,继承,多态</strong></p>
+<h5 id="特征"><a href="#特征" class="headerlink" title="特征:"></a>特征:</h5><p><strong>封装,继承,多态</strong></p>
 <p>首先看到的是数据,即被执行操作的对象</p>
-<h3>对象:</h3>
-<ul>
+<h3 id="对象"><a href="#对象" class="headerlink" title="对象:"></a>对象:</h3><ul>
 <li>对象实质上是指事物在程序中的表现形式</li>
 <li>在oop语义中,对象特征都叫做属性,动作被称为方法</li>
 </ul>
-<h3>类:</h3>
-<ul>
+<h3 id="类"><a href="#类" class="headerlink" title="类:"></a>类:</h3><ul>
 <li>类实际上就是对象的设计蓝图或配方</li>
 <li>类更多的是一种模板,而对象则是在这些模板上生成的实例</li>
 <li>类用来描述一系列相似的对象</li>
 </ul>
-<p>在其他语言中用类(class)来创建对象
-es5中还没有类,es6已经有类的概念了</p>
-<h3>封装:</h3>
-<p>封装的概念通常由两部分组成:</p>
+<p>在其他语言中用类(class)来创建对象<br>es5中还没有类,es6已经有类的概念了</p>
+<h3 id="封装"><a href="#封装" class="headerlink" title="封装:"></a>封装:</h3><p>封装的概念通常由两部分组成:</p>
 <ul>
 <li>相关的数据(用于存储属性)</li>
 <li>基于这些数据所能做的事情(所能调用的方法)</li>
 <li>信息的隐藏</li>
 </ul>
 <p>将功能的具体<strong>实现封装</strong>在对象内部,只<strong>对外暴露接口</strong>,外部在使用时,只需要考虑接口怎么使用,不需要考虑内部功能的实现</p>
-<h3>聚合:</h3>
-<ul>
+<h3 id="聚合"><a href="#聚合" class="headerlink" title="聚合:"></a>聚合:</h3><ul>
 <li>聚合有时候也叫组合,指的是将几个现有对象合并成一个新对象的过程</li>
 <li>通过聚合可以讲一个问题分解成多个问题</li>
 </ul>
-<h3>继承:</h3>
-<ul>
-<li>通过继承,可以实现对现有<strong>代码的重用</strong></li>
-<li>当对象继承另一个对象时,通常会加入新的方法,扩展被继承的老对象</li>
-<li>重定义继承方法的过程叫做重写</li>
-</ul>
-<p>在传统的oop环境中,继承通常指的是类与类之间的关系,在<strong>javascript中不存在类</strong>,<strong>继承只能发生在对象之间</strong>
-接口继承只继承方法签名,实现继承则继承实际的方法
-ECMAScript只支持实现继承,主要是依靠原型链来实现的</p>
-<h3>多态:</h3>
-<ul>
-<li>不同对象通过相同的方法来实现各自行为的能力,叫做多态</li>
-</ul>
-<p>js中没有多态,因为js不需要多态
-在强类型语言中都有多态,首先要有继承关系,父类的变量指向子类的对象,就是多态</p>
-<p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">class Animal&#123;</div><div class="line">  &#125;</div><div class="line"></div><div class="line"> class Dog:extend Animal&#123;</div><div class="line">     public void bark()&#123;</div><div class="line">         console.log("汪汪汪");</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  class Cat:extend Animal&#123;</div><div class="line">      public void bark()&#123;</div><div class="line">          console.log("喵喵喵");</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  class Pig:extend Animal&#123;</div><div class="line">      public void bark()&#123;</div><div class="line">          console.log("哼哼哼");</div><div class="line">      &#125;</div><div class="line"> &#125;</div><div class="line"></div><div class="line"> Animal d = new Dog();</div><div class="line"> d.bark();</div><div class="line">  Animal c = new Cat();</div><div class="line"> c.bark();</div><div class="line"> Animal p = new Pig();</div><div class="line"> p.bark();</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"> function bark(Aniaml d)&#123;</div><div class="line">     d.bark();</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/02/面向对象编程中的概念/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -514,7 +494,7 @@ ECMAScript只支持实现继承,主要是依靠原型链来实现的</p>
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/02/16/变量/" itemprop="url">变量</a></h1>
+                <a class="post-title-link" href="/2017/02/16/变量/" itemprop="url">javascript概念</a></h1>
         
 
         <div class="post-meta">
@@ -526,7 +506,7 @@ ECMAScript只支持实现继承,主要是依靠原型链来实现的</p>
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-16T22:08:35+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-16T22:58:45+08:00">
                 2017-02-16
               </time>
             
@@ -566,7 +546,7 @@ ECMAScript只支持实现继承,主要是依靠原型链来实现的</p>
 
           
           
-             <span id="/2017/02/16/变量/" class="leancloud_visitors" data-flag-title="变量">
+             <span id="/2017/02/16/变量/" class="leancloud_visitors" data-flag-title="javascript概念">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -595,36 +575,17 @@ ECMAScript只支持实现继承,主要是依靠原型链来实现的</p>
 
       
         
-          
-            <h3>变量的作用</h3>
-<p>用来存储可变化的数据,属于javascript中的基本类型</p>
-<h3>语法及规范</h3>
-<h4>变量的声明</h4>
-<p><code>var 变量名</code></p>
-<h4>变量的赋值</h4>
-<p><code>变量名 = 要赋值的数据;</code></p>
-<p>等号右边先计算,从左向右计算
-&lt;!--more--&gt;</p>
-<h4>变量取名规范</h4>
-<ul>
-<li>变量名取值范围:0-9,a-z,A-Z,_,$,并且数字不能作为变量名的开头</li>
-<li>变量名区分大小写,不能使用关键字和保留字,变量名最长不能超过255个字符</li>
-</ul>
-<h3>两个变量相加</h3>
-<ul>
-<li>两个都是number类型,作用是相加</li>
-<li>两个都是string类型,作用是连接</li>
-<li>一个number,一个string,连接</li>
-</ul>
-<h3>变量作用域</h3>
-<ul>
-<li>在脚本片段中的变量,是全局变量</li>
-<li>在函数中的变量,是局部变量</li>
-<li>在函数中没有用<code>var</code>声明的变量,也是全局变量
-&lt;!--more--&gt;</li>
-</ul>
-
-          
+          <h3 id="变量的作用"><a href="#变量的作用" class="headerlink" title="变量的作用"></a>变量的作用</h3><p>用来存储可变化的数据,属于javascript中的基本类型</p>
+<h3 id="语法及规范"><a href="#语法及规范" class="headerlink" title="语法及规范"></a>语法及规范</h3><h4 id="变量的声明"><a href="#变量的声明" class="headerlink" title="变量的声明"></a>变量的声明</h4><p><code>var 变量名</code></p>
+<h4 id="变量的赋值"><a href="#变量的赋值" class="headerlink" title="变量的赋值"></a>变量的赋值</h4><p><code>变量名 = 要赋值的数据;</code></p>
+<p>等号右边先计算,从左向右计算</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/16/变量/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -766,20 +727,15 @@ ECMAScript只支持实现继承,主要是依靠原型链来实现的</p>
 
       
         
-          
-            <h3>基本数据类型</h3>
-<ul>
+          <h3 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h3><ul>
 <li>直接存储</li>
 <li>存储在栈中,一次寻址</li>
 </ul>
-<h4>string:字符串</h4>
-<ul>
-<li>字符串都是用<code>&quot;&quot;</code>或<code>''</code>引起来的,可以当做直接量</li>
+<h4 id="string-字符串"><a href="#string-字符串" class="headerlink" title="string:字符串"></a>string:字符串</h4><ul>
+<li>字符串都是用<code>&quot;&quot;</code>或<code>&#39;&#39;</code>引起来的,可以当做直接量</li>
 <li>字符串是<strong>不可变</strong>的,一旦创建,值就不能改变,如果要改变字符串的值,首先要销毁原来的字符串,再用一个包含新值的字符串填充该变量,在垃圾回收之前会占用内存</li>
 </ul>
-<h4>number:数字</h4>
-<p>最基本的数值字面量是十进制的整数,除了是禁止以外还有八进制和十六进制的字面值
-八进制字面值第一位必须是0,如果字面值中的数值超过了范围,前导0会被忽略,后面的数值会被当做十进制数值解析</p>
+<h4 id="number-数字"><a href="#number-数字" class="headerlink" title="number:数字"></a>number:数字</h4><p>最基本的数值字面量是十进制的整数,除了是禁止以外还有八进制和十六进制的字面值<br>八进制字面值第一位必须是0,如果字面值中的数值超过了范围,前导0会被忽略,后面的数值会被当做十进制数值解析</p>
 <blockquote>
 <p>八进制字面量在<strong>严格模式</strong>下会报错</p>
 </blockquote>
@@ -787,41 +743,14 @@ ECMAScript只支持实现继承,主要是依靠原型链来实现的</p>
 <li>数字加了引号后就是string类型</li>
 <li>有一种特殊的数字:<code>NaN</code>(not a number)</li>
 </ul>
-<p>NaN表示<strong>非数值</strong>,即计算返回的不是一个数值,不会影响代码的执行
-<code>isNaN</code>方法可以判断是否是NaN
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="literal">NaN</span> == <span class="literal">NaN</span>;      <span class="comment">// false</span></div></pre></td></tr></table></figure></p>
-<p>&lt;!--more--&gt;</p>
-<h4>boolean:布尔类型</h4>
-<ul>
-<li>只有<code>true</code>和<code>false</code>两个字面值</li>
-<li>区分大小写</li>
-<li>空格字符串,0,NaN,null,undefined都是false</li>
-</ul>
-<h4>undefined:未定义 与 null: 空</h4>
-<h5>undefined:</h5>
-<ul>
-<li>一个变量申明但没有返回值</li>
-<li>数组中没有的值</li>
-<li>没有接收到实参的形参,值是undefined</li>
-<li>return默认返回undefined</li>
-</ul>
-<h5>null:</h5>
-<p>null类型只有一个值:null
-由于设计时的bug,<strong>null类型属于object</strong>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="literal">null</span>);	<span class="comment">// object</span></div><div class="line"><span class="literal">null</span> == <span class="literal">undefined</span>;			<span class="comment">// true</span></div></pre></td></tr></table></figure></p>
-<h3>包装数据类型</h3>
-<ul>
-<li>存储引用数据</li>
-<li>把数据存储在堆中,把堆中的内存地址存储在栈中,<strong>二次寻址</strong></li>
-<li>包装数据类型在做比较的时候比较的是<strong>地址值</strong></li>
-<li>在javascript中除了基本数据类型,其他都属于<strong>对象</strong></li>
-</ul>
-<blockquote>
-<p>对于包装数据类型单独整理
-&lt;!--more--&gt;</p>
-</blockquote>
-
-          
+<p>NaN表示<strong>非数值</strong>,即计算返回的不是一个数值,不会影响代码的执行<br><code>isNaN</code>方法可以判断是否是NaN<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="literal">NaN</span> == <span class="literal">NaN</span>;      <span class="comment">// false</span></div></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/15/数据类型/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -963,44 +892,17 @@ ECMAScript只支持实现继承,主要是依靠原型链来实现的</p>
 
       
         
-          
-            <h3>javascript分为三部分:</h3>
-<h4>ECMAScript:</h4>
-<p>javascript语言的<strong>核心</strong>部分,独立于浏览器 之外,可以在其他环境中使用</p>
-<h4>DOM:</h4>
-<p>Document Object Model
-<strong>文档对象模型</strong>,提供了一种与HTML,XML文档交互的方式</p>
-<p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">a,b</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> a = <span class="number">0</span>;</div><div class="line">    <span class="built_in">console</span>.log(b);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4>BOM:</h4>
-<p>Browser Object Model
-<strong>浏览器对象模型</strong>,提供了一个与浏览器环境有关的对象集合
-&lt;!--more--&gt;</p>
-<h3>js简介:</h3>
-<p>javascript是<strong>弱类型</strong>语言,<strong>基于对象</strong>和<strong>事件驱动</strong>的脚本语言,应用在客户端(Node已经可以应用在服务器端)
-js只需<strong>解释就可以执行</strong>,java需要先编译成字节码文件再执行</p>
-<h3>特点:</h3>
-<ul>
-<li><strong>交互性</strong></li>
-<li><strong>安全性(不能访问本地硬盘)</strong></li>
-<li><strong>跨平台性</strong></li>
-</ul>
-<h3>编译型语言:</h3>
-<p>一次性把代码转换成cpu能看懂的语言,一行一行执行解释(<strong>速度快</strong>)</p>
-<h3>解释型语言:</h3>
-<p>一行一行解析,解析一行执行一行</p>
-<h3>script标签属性:</h3>
-<ul>
-<li>async
-<strong>异步</strong>,多人同时做多件事情,<strong>立即异步下载js</strong>,不影响页面其他操作,但<strong>js下载完毕后立即执行</strong></li>
-<li>sync
-<strong>同步</strong>,一个人有序做多件事情</li>
-<li>defer
-<strong>异步</strong>,脚本延迟到<strong>文档完全被解析和显示后再执行</strong>,只有外部脚本可以用</li>
-</ul>
-<p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script src=<span class="string">""</span> defer <span class="keyword">async</span>=<span class="string">"true"</span>&gt;&lt;/script&gt;	<span class="comment">//async表示文件需要异步加载,ie不支持,所以要加上defer属性</span></div></pre></td></tr></table></figure></p>
-<p>&lt;!--more--&gt;</p>
-
-          
+          <h3 id="javascript分为三部分"><a href="#javascript分为三部分" class="headerlink" title="javascript分为三部分:"></a>javascript分为三部分:</h3><h4 id="ECMAScript"><a href="#ECMAScript" class="headerlink" title="ECMAScript:"></a>ECMAScript:</h4><p>javascript语言的<strong>核心</strong>部分,独立于浏览器 之外,可以在其他环境中使用</p>
+<h4 id="DOM"><a href="#DOM" class="headerlink" title="DOM:"></a>DOM:</h4><p>Document Object Model<br><strong>文档对象模型</strong>,提供了一种与HTML,XML文档交互的方式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">a,b</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> a = <span class="number">0</span>;</div><div class="line">    <span class="built_in">console</span>.log(b);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="BOM"><a href="#BOM" class="headerlink" title="BOM:"></a>BOM:</h4><p>Browser Object Model<br><strong>浏览器对象模型</strong>,提供了一个与浏览器环境有关的对象集合<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/14/javscript概念/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
