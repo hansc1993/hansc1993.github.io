@@ -1,9 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[jQuery-validate插件的使用]]></title>
+    <url>%2F2017%2F05%2F25%2FjQuery-validate%E6%8F%92%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[属性在表单元素中添加指定的属性，来告诉插件需要如何进行验证 data-required设置当前表单项为必填项！如果用户没有输入内容，则验证不通过 data-trim设置当前表单项在验证的时候，去掉左右两边的空格，然后进行验证传参 data-pattern为当前表单项设置一个验证使用的正则表达式，如果该正则表达式验证通过则表单项验证通过！ data-conditional为当前表单项设置一个条件，这个条件是一个函数，在验证的时候会调用这个函数，如果函数返回值为true，则验证通过，否则不通过 data-description为当前表单项提供验证提示信息，和description对象配合使用 data-describedby为提示信息指定显示位置！！！ validate方法的参数介绍sendForm用来设置，表单验证通过之后，是否自动提交表单。默认是true。 回调函数们！ valid 当表单内所有的表单元素都通过验证的时候，会调用该方法 invalid 当表单内有任意元素不通过，那么整个表单验证就不通过，就会调用该方法 eachField 当表单内任意一个元素进行验证的时候都会调用该方法！ eachValidField 当任意表单元素通过校验的时候，就会调用该方法 eachInvalidField 当任意表单元素不通过校验的时候，就会调用该方法 onKeyUp设置按键的时候，是否要进行验证 默认值false onBlur设置失去焦点的时候，是否要进行验证 默认值false onChange设置内容改变的时候，是否要进行验证 默认值false onSubmit设置表单被提交的时候，是否要进行验证 默认值true conditional可以用来设置条件验证的条件, 这是一个对象，对象里面包含好多个方法。当表单中有通过data-conditional来指定条件验证的函数的时候，插件会自动来这个对象中找对应名称的方法，进行调用，如果该方法的返回值为true则验证通过，否则验证不通过12345678conditional: &#123; "isXX": function()&#123; return ... &#125;, "isXXx": function()&#123; return ... &#125;&#125; description这个参数中用来设置验证的提示信息，需要和data-description属性配合使用data-description中指定的提示信息会在这个对象中进行查找！123456789description: &#123; //下面的这个名字就是要在data-description中指定的名字 "名字": &#123; required: "", //在验证的时候，如果非空校验失败就会显示该内容 pattern:"", //在验证的时候，如果格式校验失败就会显示该内容 conditional: "", //在验证的时候，如果条件校验失败就会显示该内容 valid: "" //在验证的时候，如果校验通过就会显示该内容 &#125;&#125; 1234567891011121314&lt;form action=""&gt; &lt;table&gt; &lt;tr&gt; &lt;td&gt; &lt;input type="text" name="username" data-description="username" data-describedby="usernameinfo" data-trim data-required data-conditional="isBeauty"&gt;&lt;p id="usernameinfo"&gt;&lt;/p&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;input type="text" data-describedby="phoneinfo" data-description="phone" name="phonenumber" data-description data-required data-pattern="\d&#123;11&#125;"&gt;&lt;p id="phoneinfo"&gt;&lt;/p&gt;&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;button id="btn"&gt;提交&lt;/button&gt;&lt;/form&gt; 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748 // validate方法是注册一个验证事件 // 而不是说调用该方法才会验证！ $("form").validate(&#123; sendForm: false, // onKeyup: true, // onBlur: true, // onChange: true, // onSubmit: false, // valid: function()&#123; // //当整个表单通过验证的时候，会调用该回调方法 // console.log("验证通过了"); // &#125;, // invalid: function()&#123; // console.log("验证不通过"); // &#125;, // eachField: function()&#123; // console.log("eachField被调用了", this); // &#125;, eachValidField: function()&#123; // console.log("eachValidField,被调用了", this); this.next().show().removeClass("error").addClass("success"); &#125;, eachInvalidField: function()&#123; // console.log("eachInvalidField,被调用了", this); this.next().show().removeClass("success").addClass("error"); &#125;, conditional: &#123; "isShuaiGe": function()&#123; return this.val() == "潘明"; &#125;, "isBeauty": function()&#123; return this.val() == "教主"; &#125; &#125;, description: &#123; "username": &#123; required: "用户名不能为空", conditional: "你输入的不是美女", valid: "输入正确！" &#125;, "phone": &#123; pattern: "手机号码不正确", required: "请输入手机号码", valid: "输入正确" &#125; &#125; &#125;);&lt;/script&gt;]]></content>
+      <categories>
+        <category>jQuery</category>
+      </categories>
+      <tags>
+        <tag>jQuery插件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[sass指令]]></title>
+    <url>%2F2017%2F05%2F19%2Fsass%E6%8C%87%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[interpolation把一个值插入到另一个值里面在sass中,可以将变量或表达式放到带#号的花括号里面,可以在样式的选择器或属性里面使用#{}12345678910$version:"0.0.1";/*current version:#&#123;$version&#125;*/$name:"info";$attr:"border";.alert-#&#123;$name&#125; &#123; #&#123;$attr&#125;-color:red;&#125; 编译后123/*current version:0.0.1*/.alert-info &#123; border-color: red; &#125; control directives在定义复杂的mixin或函数的时候,可能会用到一些控制指令@if,@for,@@each,@while @if12345678910111213141516171819202122$use-prefixes: false;$theme: dark;body &#123; @if $theme == dark &#123; background-color:black; &#125;@else if $theme == light &#123; background-color:white; &#125;@else &#123; background-color:grey; &#125;&#125;.rounded&#123; @if $use-prefixes &#123; -webkit-border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px; -o-border-radius:5px; &#125; border-radius:5px;&#125; 编译后12345body &#123; background-color: black; &#125;.rounded &#123; border-radius: 5px; &#125; @for12345678$columns: 4;/* through 包含结束值,但to不包含结束值 */@for $i from 1 through $columns &#123; .col-#&#123;$i&#125; &#123; width:100%/$columns *$i &#125;&#125; 编译后12345678910111213@charset "UTF-8";/* through 包含结束值,但to不包含结束值 */.col-1 &#123; width: 25%; &#125;.col-2 &#123; width: 50%; &#125;.col-3 &#123; width: 75%; &#125;.col-4 &#123; width: 100%; &#125; @each1234567$icons: success error warning;@each $icon in $icons &#123; .icon-#&#123;$icon&#125; &#123; background-image : url(../images/icons/#&#123;$icon&#125;.png); &#125;&#125; 编译后12345678.icon-success &#123; background-image: url(../images/icons/success.png); &#125;.icon-error &#123; background-image: url(../images/icons/error.png); &#125;.icon-warning &#123; background-image: url(../images/icons/warning.png); &#125; @while12345678$i: 6;@while $i&gt;0 &#123; .item-#&#123;$i&#125; &#123; width:5px* $i; &#125; $i: $i - 2;&#125; 编译后12345678.item-6 &#123; width: 30px; &#125;.item-4 &#123; width: 20px; &#125;.item-2 &#123; width: 10px; &#125; 自定义函数@function123456789$colors: (light:#fff,dark:#000);@function color($key) &#123; @return map-get($colors,$key);&#125;body&#123; background-color: color(light);&#125; 编译后12body &#123; background-color: #fff; &#125; 警告和错误提示在自己定义的函数中可以设置一些警告和错误的提示信息1234567891011121314$colors: (light:#fff,dark:#000);@function color($key) &#123; @if not map-has-key($colors, $key ) &#123; // @error 会在编译后的css文件中报错 // @warn 会在命令行中显示提示信息 @error "meizhaodao"#&#123;key&#125;"zhege key" &#125; @return map-get($colors,$key);&#125;body&#123; background-color: color(grey);&#125;]]></content>
+      <categories>
+        <category>css</category>
+      </categories>
+      <tags>
+        <tag>sass</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[sass数据类型]]></title>
+    <url>%2F2017%2F05%2F18%2Fsass%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%2F</url>
+    <content type="text"><![CDATA[SassScript在css属性的基础上提供了一些新功能,允许属性使用变量,运算等额外功能 Interactive Shell可以在命令行中测试SassScript功能,在命令行中输入sass -i,然后输入想要测试的SassScript查看输出结果1234567891011sass -i&gt;&gt; type-of(5)"number"&gt;&gt; type-of(5px)"number"&gt;&gt; type-of(hello)"string"&gt;&gt; type-of(1px solid #000)"list"&gt;&gt; type-of(#ff0000)"color" number数字类型运算与js相同,但是除法不同在css中会用/来表示属性的连写,sass保留了这个写法,如果要做除法运算,要将运算用()括起来123456789101112131415161718&gt;&gt; 2+810&gt;&gt; "2"+"8""28"&gt;&gt; 8/28/2&gt;&gt; (8/2)4&gt;&gt; 5px+5px10px&gt;&gt; 5px*210px&gt;&gt; 5px * 2px // 错误运算10px*px&gt;&gt; (10px/2px)5&gt;&gt; (10px/2)5px 数字函数sass提供了一些处理数字的函数12345678910111213141516&gt;&gt; abs(10)10&gt;&gt; abs(-10)10&gt;&gt; round(3.5)4&gt;&gt; ceil(3.2)4&gt;&gt; floor(3.2)3&gt;&gt; percentage(650px/1000px)65%&gt;&gt; min(10,5,3)3&gt;&gt; max(10,5,3)10 stringsass支持有引号字符串和无引号字符串,在编译css文件时不会改变类型 使用#{}时,有引号字符串被编译为无引号字符串,便于在mixin中引用选择器名 123456@mixin msg($selector) &#123; body #&#123;selector&#125;:before &#123; content: "hello world"; &#125;&#125;@include msg(".header"); 12body selector:before &#123; content: "hello world"; &#125; 字符串函数123456789101112131415&gt;&gt; $greeting: "hello world""hello world"&gt;&gt; $greeting"hello world"&gt;&gt; to-upper-case($greeting)"HELLO WORLD"&gt;&gt; to-lower-case($greeting)"hello world"&gt;&gt; str-length($greeting)11&gt;&gt; str-index($greeting,"hello")1&gt;&gt; str-insert($greeting,"2017",12) "hello world2017" str-insert($greeting,”2017”,12)插入字符串,第三个参数表示插入的位置 color和css中一样HSLA: 色相 饱和度 明度 透明度 hsla(0,100%,50%,0.5); 颜色函数12345678910111213141516171819202122232425262728$base-color:#ff0000;$base-color-hsl:hsl(222,100,50%);// 调整颜色明度$light-color:lighten($base-color,30%);$dark-color:darken($base-color,20%);// 调整颜色饱和度$saturate-color:saturate($base-color,50%);$desaturate-color:desaturate($base-color,50%);// 调整不透明度$fade-in-color:opacify($opacity-color,0.3); // 0.8$fade-out-color:transparentize($opacity-color,0.2); // 0.3body&#123;// 调整颜色色相 background-color:adjust-hue($base-color,137deg); div&#123; background-color:$light-color; color:$saturate-color; border:1px solid $fade-in-color; &#125; a&#123; background-color:$dark-color; color:$desaturate-color; border:1px solid $fade-out-color; &#125;&#125; 编译后12345678910body &#123; background-color: #00ff48; &#125; body div &#123; background-color: #ff9999; color: red; border: 1px solid rgba(255, 0, 0, 0.8); &#125; body a &#123; background-color: #990000; color: #bf4040; border: 1px solid rgba(255, 0, 0, 0.3); &#125; list类似于数组,指的是属性里的一串用空格或逗号分开的值 列表函数1234567891011121314&gt;&gt; length(5px 10px)2&gt;&gt; nth(5px 10px,1)5px&gt;&gt; nth(5px 10px,2)10px&gt;&gt; index(1px solid #ccc,solid)2&gt;&gt; append(5px 10px , 5px,comma)(5px,10px,5px)&gt;&gt; join(5px 10px,5px 0)(5px 10px 5px 0)&gt;&gt; join(5px 10px,5px 0,comma)(5px, 10px, 5px, 0) map名值对的列表1$map:(key1:value1,key2:value2,key3:value3) map函数12345678910111213141516&gt;&gt; $color:(light:#fff,dark:#000)(light: #fff, dark: #000)&gt;&gt; length($color)2&gt;&gt; map-get($color,dark)#000000&gt;&gt; map-keys($color)("light", "dark")&gt;&gt; map-values($color)(#ffffff, #000000)&gt;&gt; map-has-key($color,light)true&gt;&gt; $color:map-merge($color,(light-grey:#ccc))(light: #fff, dark: #000, light-grey: #ccc)&gt;&gt; $color:map-remove($color,light-grey)(light: #fff, dark: #000) booleantrue/false,在sass中可以使用比较运算符1234567891011&gt;&gt; (5px&gt;3px) and(5px&gt;3px)true&gt;&gt; (5px&gt;3px) or (5px&gt;3px)true&gt;&gt; (5px&gt;3px) or (5px&lt;3px)true&gt;&gt; (5px&gt;3px) and (5px&lt;3px)false&gt;&gt; not (5px&gt;3px)false&gt;&gt;]]></content>
+      <categories>
+        <category>css</category>
+      </categories>
+      <tags>
+        <tag>sass</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[sass语法]]></title>
+    <url>%2F2017%2F05%2F17%2Fsass%E8%AF%AD%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[变量$varible: value;在变量中也可以引用其他变量 在变量名中使用-,在调用时使用_也是可以的 嵌套1234567nav &#123; ul &#123; li &#123; &#125; &#125;&#125; 编译后123456789nav &#123;&#125;nav ul &#123; &#125;nav ul li &#123; &#125; 编译时,被嵌套的选择器前会加一个空格,表示被嵌套的选择器是嵌套的选择器的后代,如果需要的不是这样选择关系可以使用一个&amp;符号,表示引用父选择器12345nav &#123; $ $-text &#123; &#125;&#125; 编译后123nav nav-text &#123;&#125; 嵌套属性1234567body &#123; font: &#123; famiy: sans-serif; size: 15px; weight: normal; &#125;&#125; 编译后12345body &#123; font-family: sans-serif; font-size: 15px; font-weight: normal;&#125; mixin 混合类似于js中的函数,可以使用参数123456789@mixin name ($text-color,$background) &#123; color:$text-color; background-color:$background;&#125;.name &#123; // 使用参数的值要和定义的参数顺序相同 @include name(red,blue);&#125; 编译后1234.name &#123; color:red; background-color:blue;&#125; @extend让一个元素继承另一个元素中的样式1234567891011.alert &#123; padding:15px;&#125;.alert a &#123; font-weight:bold;&#125;.alert-info &#123; @extend .alert; background-color:red;&#125; 编译后123456789.alert,.alert-nfo &#123; padding:15px;&#125;.alert a, .alert-info a &#123; font-weight:bold;&#125;.alert-info &#123; background-color:red;&#125; @importcss本身就能使用@import导入其他的文件,但是每次使用,浏览器都会发出一次新的http请求,导入样式文件,每次http请求都会消耗资源,会让页面加载变慢sass扩展了这个功能,可以在一个sass文件里把其他的sass文件包含进来,编译成一个css文件可以把sass分为一些小的部件,再用sass将这些部件编译成一个css文件在sass中这样的部件叫做partials,每一个partial文件都需要用一个_开头,partial可以让项目模块化,变得更有条理在sass文件中导入partial1@import "base" //导入文件不需要文件前面的_和拓展名 注释 多行注释1234/* * * */ 在编译输出时保留,在压缩输出时会去掉 单行注释1// 不会出现在编译输出后的内容中 强制注释1234/*! * * */ 一直出现在内容中]]></content>
+      <categories>
+        <category>css</category>
+      </categories>
+      <tags>
+        <tag>sass</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[sass基础]]></title>
+    <url>%2F2017%2F05%2F16%2Fsass%E5%9F%BA%E7%A1%80%2F</url>
+    <content type="text"><![CDATA[sass介绍Syntactically Awesome StyleSheetsSass是一款强化CSS的辅助工具,在CSS的语法基础上添加了一些高级功能,使CSS更加强大与优雅 sass安装安装sass之前需要安装ruby环境https://rubyinstaller.org/downloads/,安装时,注意勾选Add Ruby executables to your PATH 安装完成后通过ruby -v测试安装是否成功 通过ruby的包管理工具gem安装sass gem install sass通过sass -v确认安装成功 常用sass指令:123gem updata sass // 更新sasssass -h // 查看sass帮助sass -v // 查看sass版本 sass编译sass文件需要编译成css文件才能使用,有多种方法可以通过kola编译,ide编译,命令行编译… 在使用命令行编译时,文件路径不能有中文,否则会报错解决编译不能使用中文：找到ruby安装目录C:\Ruby\lib\ruby\gems\1.9.1\gems\sass-3.3.14\lib\sass找到engine.rb文件,在require xxx之后添加Encoding.default_external = Encoding.find(‘utf-8’) 命令行编译1sass sass/style.scss: css/style.css 通过命令行监听文件变化自动编译1sass --watch sass:css 编译输出格式sass编译输出的css有四种格式 nested:嵌套默认格式css输出的时候会保留嵌套的格式 12345678910111213// sassul &#123; color:red; li&#123; color:blue; &#125;&#125;// cssul &#123; color: red; &#125; ul li &#123; color: blue; &#125; compact:紧凑 1sass --watch sass:css --stle compact 每一块样式都会单独在同一行内123ul &#123; font-size: 18px; &#125;ul li &#123; color: red; font-size: 18px; &#125;ul li a &#123; color: red; &#125; expanded:扩展1sass --watch sass:css --stle expanded 和平时手动书写css一样,更容易阅读1234567ul &#123; color:red;&#125;ul li &#123; color: blue;&#125; compressed:压缩1ul&#123;color:red;&#125;ul li&#123;color:blue;&#125; sass语法sass有两种语法 缩进式语法:使用这种语法的扩展名是.sass 新语法:在sass3.0以后扩展了一种新的语法,sassy css,更接近平时的css,扩展名是.scss]]></content>
+      <categories>
+        <category>css</category>
+      </categories>
+      <tags>
+        <tag>sass</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[面向对象编程中的概念]]></title>
     <url>%2F2017%2F03%2F02%2F%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E4%B8%AD%E7%9A%84%E6%A6%82%E5%BF%B5%2F</url>
-    <content type="text"><![CDATA[面向对象:可以创建自定义的类型,很好的支持继承和多态 面向对象的语言: c++/java/c# 特征:封装,继承,多态 首先看到的是数据,即被执行操作的对象 对象: 对象实质上是指事物在程序中的表现形式 在oop语义中,对象特征都叫做属性,动作被称为方法 类: 类实际上就是对象的设计蓝图或配方 类更多的是一种模板,而对象则是在这些模板上生成的实例 类用来描述一系列相似的对象 在其他语言中用类(class)来创建对象es5中还没有类,es6已经有类的概念了 封装:封装的概念通常由两部分组成: 相关的数据(用于存储属性) 基于这些数据所能做的事情(所能调用的方法) 信息的隐藏 将功能的具体实现封装在对象内部,只对外暴露接口,外部在使用时,只需要考虑接口怎么使用,不需要考虑内部功能的实现 聚合: 聚合有时候也叫组合,指的是将几个现有对象合并成一个新对象的过程 通过聚合可以讲一个问题分解成多个问题 继承: 通过继承,可以实现对现有代码的重用 当对象继承另一个对象时,通常会加入新的方法,扩展被继承的老对象 重定义继承方法的过程叫做重写 在传统的oop环境中,继承通常指的是类与类之间的关系,在javascript中不存在类,继承只能发生在对象之间接口继承只继承方法签名,实现继承则继承实际的方法ECMAScript只支持实现继承,主要是依靠原型链来实现的 多态: 不同对象通过相同的方法来实现各自行为的能力,叫做多态 js中没有多态,因为js不需要多态在强类型语言中都有多态,首先要有继承关系,父类的变量指向子类的对象,就是多态 123456789101112131415161718192021222324252627282930313233class Animal&#123; &#125; class Dog:extend Animal&#123; public void bark()&#123; console.log("汪汪汪"); &#125; &#125; class Cat:extend Animal&#123; public void bark()&#123; console.log("喵喵喵"); &#125; &#125; class Pig:extend Animal&#123; public void bark()&#123; console.log("哼哼哼"); &#125; &#125; Animal d = new Dog(); d.bark(); Animal c = new Cat(); c.bark(); Animal p = new Pig(); p.bark(); function bark(Aniaml d)&#123; d.bark(); &#125;]]></content>
+    <content type="text"><![CDATA[面向对象:可以创建自定义的类型,很好的支持继承和多态 面向对象的语言:c++/java/c# 特征:封装,继承,多态 首先看到的是数据,即被执行操作的对象 对象: 对象实质上是指事物在程序中的表现形式 在oop语义中,对象特征都叫做属性,动作被称为方法 类: 类实际上就是对象的设计蓝图或配方 类更多的是一种模板,而对象则是在这些模板上生成的实例 类用来描述一系列相似的对象 在其他语言中用类(class)来创建对象es5中还没有类,es6已经有类的概念了 封装:封装的概念通常由两部分组成: 相关的数据(用于存储属性) 基于这些数据所能做的事情(所能调用的方法) 信息的隐藏 将功能的具体实现封装在对象内部,只对外暴露接口,外部在使用时,只需要考虑接口怎么使用,不需要考虑内部功能的实现 聚合: 聚合有时候也叫组合,指的是将几个现有对象合并成一个新对象的过程 通过聚合可以讲一个问题分解成多个问题 继承: 通过继承,可以实现对现有代码的重用 当对象继承另一个对象时,通常会加入新的方法,扩展被继承的老对象 重定义继承方法的过程叫做重写 在传统的oop环境中,继承通常指的是类与类之间的关系,在javascript中不存在类,继承只能发生在对象之间接口继承只继承方法签名,实现继承则继承实际的方法ECMAScript只支持实现继承,主要是依靠原型链来实现的 多态: 不同对象通过相同的方法来实现各自行为的能力,叫做多态 js中没有多态,因为js不需要多态在强类型语言中都有多态,首先要有继承关系,父类的变量指向子类的对象,就是多态 123456789101112131415161718192021222324252627282930313233class Animal&#123; &#125; class Dog:extend Animal&#123; public void bark()&#123; console.log("汪汪汪"); &#125; &#125; class Cat:extend Animal&#123; public void bark()&#123; console.log("喵喵喵"); &#125; &#125; class Pig:extend Animal&#123; public void bark()&#123; console.log("哼哼哼"); &#125; &#125; Animal d = new Dog(); d.bark(); Animal c = new Cat(); c.bark(); Animal p = new Pig(); p.bark(); function bark(Aniaml d)&#123; d.bark(); &#125;]]></content>
       <categories>
         <category>javascript</category>
       </categories>
@@ -12,14 +67,157 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[javascript概念]]></title>
+    <title><![CDATA[事件和事件监听]]></title>
+    <url>%2F2017%2F02%2F25%2F%E4%BA%8B%E4%BB%B6%E5%92%8C%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC%2F</url>
+    <content type="text"><![CDATA[事件的概念事件是可以被javascript检测到的行为 事件三要素 事件源 事件 事件处理程序 事件源要触发事件的对象 事件举例事件就是怎样去触发事件onclick 鼠标单击事件ondblclick 鼠标双击事件onkeyup 按下并释放键盘上的一个键onchange 文本内容或下拉菜单的选项发生改变,value值发生改变时的事件onfocus 获得焦点onblur 失去焦点onmouseover 鼠标悬浮onmouseout 鼠标移出onload 网页文档加载onsubmit 表单提交…… 事件处理程序发生了什么事1234var oDiv = document.getElementsByTagName("div")[0];oDiv.onclick = function() &#123; alert(1)&#125; 事件绑定要想让avascript对用户的操作做出响应,首先要对DOM元素绑定事件处理函数,常用的有三种方法 在DOM元素中直接绑定 123456&lt;input type="button" value="点击" onclick="hello()"&gt;&lt;script&gt;function hello() &#123; alert("hello world");&#125;&lt;/script&gt; 在javascript代码中绑定 1234var oDiv = document.getElementsByTagName("div")[0];oDiv.onclick = function() &#123; alert("hello world")&#125; 事件监听通过addEventListener()或attachEvent()来绑定事件监听函数 事件流事件发生在元素节点与根节点之间按照特定的顺序传播,路径所经过的所有节点都会收到该事件,这个传播过程就叫事件流,事件流包括三个阶段 捕获阶段从祖先元素到当前触发事件的元素 目标阶段触发事件的元素 事件冒泡阶段触发事件的时候,该元素的所有祖先元素的该事件都会被执行 火狐谷歌ie9+支持以上三个阶段ie678只支持冒泡 事件监听addEventListener(event,function,useCapture)参数有三个: 事件名 事件触发时执行的函数(匿名函数或函数名) 指定事件在捕获或冒泡阶段执行 true 捕获 false 冒泡,默认 先绑定的先执行火狐谷歌ie9+支持ie678不支持 12345678&lt;input type="button" value="点击" id="btn"&gt;&lt;script&gt;document.getElementById("btn").addEventListener("click",hello);function hello()&#123; alert("hello world!");&#125;&lt;/script&gt; attachEvent(event,function)参数有两个: 事件名(带on) 逻辑(匿名函数或函数名) 没有第三个参数,ie678只支持冒泡不支持捕获先绑定的后执行只支持ie6~10 事件监听的兼容封装 思路封装addEventListener和attachEvent;(浏览器支持谁，就使用谁)； 判断支持就调用，不支持就不掉用； 12345678910111213141516171819function registEvent(ele,type,fn)&#123; if(document.addEventListener)&#123; return function(ele,type,fn)&#123; ele.addEventListener(type,fn); &#125; &#125;else if(document.attachEvent)&#123; //event对象通过window.event获取,this指向window return function()&#123; ele.attachEvent("on"+type,function()&#123; fn.call(ele,window.event); &#125;); &#125; &#125;else&#123; return function()&#123; ele["on"+type] = fn; &#125; &#125;&#125;]]></content>
+      <categories>
+        <category>javascript中级</category>
+      </categories>
+      <tags>
+        <tag>事件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[操作DOM节点]]></title>
+    <url>%2F2017%2F02%2F24%2F%E6%93%8D%E4%BD%9CDOM%E8%8A%82%E7%82%B9%2F</url>
+    <content type="text"><![CDATA[创建并添加节点 创建一个节点 获取父节点 将节点添加到父节点中1234var b=document.creatElement("input"); // 创建inputvar t=document.createTextNode(“”); // 创建文本节点var d=document.getElementById(""); // 获取父节点d.appendChild(t); // 将节点添加到父节点 在创建节点时可以直接将事件绑定在节点上,不需要再重新全部循环绑定事件 另一种方式添加节点:使用容器型标签中的一个属性.innerHTML 1.获取父节点 2.父节点.innerHTML 删除节点: 获取节点 使用节点的removeNode方法删除 oNode.removeNode(false);(不会删除子节点) oNode.removeNode(true);(删除子节点) 少用 一般使用removeChild方法删除子节点 oNode.parentNode.removeChild(ONode);(父节点的子节点(自己)以及后代) DOM属性和方法:document.write()直接写入到页面的内容流只能写document调用 如果在文档加载完毕后使用,会覆盖文档原有的html(onload事件会在页面或图像加载完成后立即执行,页面加载完成后,文档流关闭,再使用document.write写内容会将原来页面的内容覆盖) document.write()执行流程write方法用于向文档流中写入内容,当文档在加载的时候文档流是可写的,所以就不用调用close()open()方法来打开和关闭输出流当文档加载完成后,文档流是不可写的,要write就要先打开输出流,通过调用open()打开,这个方法会清除当前文档(通常open方法在调用write时自动使用) 修改节点: 获取原始节点和修改节点 使用replaceChild进行替换(3会消失,想要3不消失要使用克隆)oNode1.parentNode.replaceChild(oNode3,oNode1)12 克隆节点:oNode.cloneNode(true)参数为true时带子节点一起克隆参数为false时不带子节点克隆无法复制事件,复制出来的id值都一样 插入节点:insertBefore()在已有元素前插入一个新元素:参数: new Element targetElement parentElement 1parentElement.insertBefore(newElement, targetElement) 参考节点如果为null或undefined那么,insertBefore和appendChild效果一样 insertAfter()在已有元素后面插入一个新元素:在dom中并没有提供这种方法,但在jq中有这种方法,在dom中可以通过使用一些工具来模拟出这种方法12345678function insertAfter (newElement , targetElement ) &#123; var parent=targetElement.parentNode; if (parent.lastChild == targetElement) &#123; parent,appenChild(newElement); &#125;else &#123; parent.insertBefore(newElement,targetElement.nextSibling); &#125; &#125; 获取属性节点:getAttributeNode() 操作样式:如果用户点击所需要的效果不唯一,仅通过传递多个参数虽然可以实现效果,但是 传参过多,阅读性差, js代码和css代码耦合性高, 不利扩展 解决:将多个所需样式进行封装,封装到选择器中,只要给指定的标签加载不同的选择器就可以了 步骤: 在css中使用类选择器写样式 在js中先获取需要修改的html标签节点 修改节点的className 操作属性: DOM对象.属性名/DOM对象[属性名] get/set/removeAttribute() 区别:第一种方法操作的自定义属性不会出现在标签中,会绑定到DOM上第二种方法操作的自定义属性会出现在标签中,会绑定到标签上 两种方式的自定义属性不能交叉设置获取 .属性名方式获取不到时默认为undefined.getAttribute方式获取不到时默认为null 属性种类 普通(src,title,id…)与标签中一样 特殊(className,innerHTML,href…) 表单(disabled,selected.checked…) style(这类属性为对象,其他为字符串)]]></content>
+      <categories>
+        <category>javascript中级</category>
+      </categories>
+      <tags>
+        <tag>DOM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[获取DOM节点]]></title>
+    <url>%2F2017%2F02%2F23%2F%E8%8E%B7%E5%8F%96DOM%E8%8A%82%E7%82%B9%2F</url>
+    <content type="text"><![CDATA[dom对象的作用：可以对标记型文档进行操作 最常见的操作： 想要实现动态效果,需要对节点操作,那么要先获取到这个节点 要想获取节点,必须先获取到节点所属的文档对象document 所以document对象最常见的操作就是获取页面中的节点 节点都有三个必备属性： 节点名称(nodeName) 节点类型(nodeType) 节点值(nodeValue) 常见节点有三种：标签节点(类型1),属性节点(类型2),文本节点(类型3)标签型节点是没有值的,属性和文本节点是可以有值的nodeType == 1 元素节点nodeType == 2 属性节点nodeType == 3 文本节点nodeType == 8 注释节点nodeType == 9 文档节点 获取标签型节点中的文本： innerHTML(ie,火狐都支持)获取双闭合标签中的内容,识别标签会覆盖原有事件 value获取标签中带有value属性的标签 innerText(只有ie支持)不识别标签,获取不到标签 textContent老版本的火狐不支持innerText 封装一个方法兼容火狐,参数:获取谁的内容, 返回值,返回获取的内容1234567891011121314function getTxt(ele) &#123; if(ele.textContent != undefined)&#123; return ele.textContent; &#125;else &#123; return ele.innerText; &#125;&#125; function setTxt(ele,txt) &#123; if(ele.textContent != undefined) &#123; ele.textContent = txt; &#125;else &#123; ele.innerText = txt; &#125;&#125; 获取节点的方法：直接获取: getElementById() 通过标签的id属性值获取该标签节点,返回该标签节点(返回与id值对应的元素节点的对象) 永远都是document调用,一个文档里只存在一个id getElementsByClassName() 通过标签的类名获取节点,因为类名有相同,所以返回的是一个数组 这个方法是H5新增的方法,不兼容ie8以下浏览器 123456789101112131415161718//解决IE8以下不支持getElementsByClassNameif (!document.getElementsByClassName) &#123; document.getElementsByClassName = function (className, element) &#123; var children = (element || document).getElementsByTagName('*'); var elements = new Array(); for (var i = 0; i &lt; children.length; i++) &#123; var child = children[i]; var classNames = child.className.split(' '); for (var j = 0; j &lt; classNames.length; j++) &#123; if (classNames[j] == className) &#123; elements.push(child); break; &#125; &#125; &#125; return elements; &#125;;&#125; getElementsByTagName() 通过标签名获取节点因为标签名会重复,所以返回的是一个数组 document和其他元素都可以调用 获取部分节点： 使用document获取的是页面中的所有节点,只要获取到被操作的节点所属的节点即可,在通过这个节点获取到它里面所有的节点容器型标签都具备getElementsByTagName()在该标签范围内获取指定名称的标签 123var divnode=document.getElementById("");var anodes=divnode.getElementsByTagName("a");for(var i=0;i&lt;anodes.length;i++)&#123;&#125; 通过节点层次关系(访问关系)获取节点对象:一个标签和另一个标签的位置关系进行获取所有的访问关系都是以属性形式存在 父节点：parentNode：对应一个节点对象,兼容性好 子节点：childNodes ：对应一个节点集合(直接后代,儿子)官方推荐,但是会获取注释节点返回的是节点的集合一般与nodetype一起用 children:很实用,但官方不推荐,ie678可以获取元素节点返回指定元素的子元素集合,只返回html节点 兄弟节点：兼容性不好 上一个兄弟节点：previousSibling , ie678支持获取前一个兄弟元素节点,谷歌不管是元素还是非元素,直接获取前一个节点(所以会获取空格或换行) previousElementSibling 谷歌直接获取前一个兄弟元素节点,ie678不支持 下一个兄弟节点：next…同上 尽量少用兄弟节点,在解析时会出现浏览器不同解析不一致会解析出标签间的空白节点(去掉标签之间的空格,换行) 单个子节点:类比兄弟节点:firstElementChild在谷歌中获取第一个子元素节点,ie678不支持firstChild在谷歌中获取第一个子节点,ie中获取第一个元素子节点和注释节点]]></content>
+      <categories>
+        <category>javascript中级</category>
+      </categories>
+      <tags>
+        <tag>DOM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[DOM]]></title>
+    <url>%2F2017%2F02%2F23%2FDOM%2F</url>
+    <content type="text"><![CDATA[document object model(文档对象模型) DOM是一套操作html和xml文档的api,用来将标记型文档封装成对象,并将标记型文档中所有的内容（标签,文本,属性）等都封装成对象 为了更为方便的操作这些文档以及文档中的内容,有对象的出现就可以有属性和行为被调用 文档标记型文档 对象封装了属性和行为的实体,可以被直接调用 模型所有标记型文档都具备一些共性特征的一个体现 标记型文档（标签,属性,标签中封装的数据）只要是标记型文档,DOM都可以对其进行操作 DOM工作模式 先加载文档的静态内容,再动态刷新,不影响静态内容(对页面内容进行刷新不需要在浏览器里面刷新页面) 常见的标记型文档:html,xml要操作标记型文档,必须对其进行解析 DOM技术的解析方式:将标记型文档解析一棵DOM树,并将树中的内容都封装成节点对象 注意:DOM解析方式的好处,可以对树中的节点进行任意操作,比如:增删改查 缺点:这种解析需要将整个标记型文档加载进内存意味着如果标记型文档的体积很大,会浪费内存空间 另一种解析方式:SAX是由一些组织定义的民间常用解析方式,并不是w3c标准SAX基于事件驱动的解析（获取数据速度快）但是不能对标记进行增删改 DOM模型有三种 DOM LEVEL 1 :将html文档封装成对象 DOM LEVEL 2 : 在1基础上加入了新功能,比如解析名称空间 DOM LEVEL 3 : 将xml文档封装成了对象 DHTML动态的HTML,不是一门语言,是多项技术综合体的简称其中包含了HTML,CSS,DOM,JAVASCRIPT这四个技术在动态HTML页面效果定义时: HTML:负责提供标签,对数据进行封装,目的是便于对该标签中的数据进行操作 CSS:负责提供样式属性,对标签中的数据进行样式定义 DOM:负责将标签性文档以及内容进行解析并封装成对象,在对象中定义了更多的属性和行为,便于操作 JS:负责提供程序设计语言,对页面中的对象进行逻辑操作 没有与服务器发生交互的页面叫做静态页面DHTML+XMLhttpRequest=AJAX DOM相关概念: 文档:指html或xml文件 节点:html文档中的所有内容都可以称为节点,共有12种节点类型,所有的节点类型都继承自node类型 元素:html文档中的标签可以称为元素 文档元素（根元素）:文档中的第一个元素,html文档元素就是&lt;html&gt; 文本节点:标签中的文本内容 属性节点:标签中的属性]]></content>
+      <categories>
+        <category>javascript中级</category>
+      </categories>
+      <tags>
+        <tag>DOM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[数组的迭代方法]]></title>
+    <url>%2F2017%2F02%2F22%2F%E6%95%B0%E7%BB%84%E7%9A%84%E8%BF%AD%E4%BB%A3%E6%96%B9%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[every()作用:查询数组中的项是否满足条件,所有的项都满足条件,才返回true参数:function(currentValue,index,arr){} function必须,数组中的每个元素都会执行这个函数返回值:如果每一项都返回true,则返回true注意:原数组不改变1234var arr = [1,2,3,4,5,6];arr.every(function(num)&#123; return num%2==0&#125;) // false some()与every类似,但是只要有一项返回true,就返回true1234var arr = [1,2,3,4,5,6];arr.some(function(num)&#123; return num%2==0&#125;) // true forEach()作用:对数组中每一项运行传入的函数,没有返回值参数:函数 function(value,index,arr){}返回值:没有返回值注意:原数组不改变12345var arr = [1,2,3,4,5,6];arr.forEach(function(num)&#123; console.log(num*num)&#125;) //1 4 9 16 25 36console.log(arr); // [1,2,3,4,5,6] map()作用:类似于forEach,但是返回一个新数组,数组的每一项都是在原数组中的对应项上运行传入函数的结果参数:function(currentValue,index,arr){}返回值:返回数组,包含了运行函数之后的结果注意:原数组不改变12345var arr = [1,2,3,4,5,6];arr.map(function(num)&#123; return num*num&#125;) // [1,4,9,16,25,36]console.log(arr); // [1,2,3,4,5,6] filter()作用:类似于every,但是返回一个新数组,数组中的元素是通过检查指定数组中符合条件的元素参数:function(currentValue,index,arr){},thisValue function必须,数组中的每个元素都会执行这个函数返回值:返回包含符合条件的元素或空数组注意:原数组不变,不会对空数组检测1234var arr = [1,2,3,4,5,6];arr.filter(function(num)&#123; return num%2==0&#125;) // [2,4,6] reduce(),reduceRight()作用:迭代数组中所有的项,构建一个最终返回值,前一个方法从第一项开始,后一个方法从最后一项开始参数有两个: 在每一项上调用的函数function(prev,cur,index,array){} 前一个值,当前值,项的索引和数组对象 函数返回的任何值都会作为第一个参数自动传给下一项 第一次迭代发生在第二项上,因此第一个参数是第一项 作为归并基础的初始值 返回值:运算结果注意:不改变原数组 1234var arr = [1,2,3,4,5,6];arr.reduce(function(prev,cur)&#123; return prev+cur&#125;,10) // 31 数组去重1234567891011var arr = [1,"1",1,undefined,'undefined',undefined,null,'null',true,"true",true];function uniq (arr) &#123;var temp = [];for(var i = 0, length1 = arr.length; i &lt; length1; i++)&#123; temp.indexOf(arr[i]) === -1 &amp;&amp; temp.push(arr[i]);&#125;return temp;&#125;var arr1= uniq(arr);console.log(arr); // [1,"1",1,undefined,'undefined',undefined,null,'null',true,"true",true];console.log(arr1); // [1,"1",undefined,'undefined',null,'null',true,"true"]; 统计数组中元素出现的次数,并求出现次数最多的那一项1234567891011121314151617181920212223function findMost(arr) &#123; if (!arr.length) return if (arr.length === 1) return 1 var res = &#123;&#125; // 遍历数组 for (var i=0,l=arr.length;i&lt;l;i++) &#123; if (!res[arr[i]]) &#123; res[arr[i]] = 1 &#125; else &#123; res[arr[i]]++ &#125; &#125; // 遍历 res var keys = Object.keys(res) var maxNum = 0, maxEle for (var i=0,l = keys.length;i&lt;l;i++) &#123; if (res[keys[i]] &gt; maxNum) &#123; maxNum = res[keys[i]] maxEle = keys[i] &#125; &#125; return maxNum&#125;]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>javacript基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[数组的方法]]></title>
+    <url>%2F2017%2F02%2F22%2F%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[Array:数组数组就是一个用于存储数据的列表javascript中数组的每一项都可以保存任何类型的数据,数组的大小是可以动态调整的声明数组的方法:1. 创建数组对象,标准声明方式1var arr = new Array(); 数组字面量,也叫直接量,简单声明方式1var arr = []; push(arg1,arg2…)作用:在数组末尾添加一个或多个元素参数:需要添加的元素（一个或多个）返回值:新数组的长度注意:原数组会改变 pop()作用:从数组后面删除一项参数:无返回值:删除的那一项注意:原数组会改变123456var arr = [1,2,3]arr.push(4); // 4arr.push(5,6); // 6console.log(arr); // [1,2,3,4,5,6]arr.pop(); // 6console.log(arr); // [1,2,3,4,5] shift()作用:从数组中前面删除一项参数:无返回值:删除的那一项注意:原数组会改变 unshift(arg1,arg2…)作用:从数组前面往里面添加一个或多个元素参数:添加的一个或多个元素返回值:改变后的数组的长度注意；原数组会改变 123456var arr = [1,2,3];arr.unshift(4); // 4arr.unshift(5,6); // 6console.log(arr); // [5,6,4,1,2,3]arr.shift(); // 5console.log(arr); // [5,4,1,2,3] reverse()作用:反转数组参数:无返回值:反转之后的数组注意:原数组会改变123var arr = [1,2,3,4,5,6];arr.reverse(); // [6,5,4,3,2,1]console.log(arr); // [6,5,4,3,2,1] sort(fn)作用:数组排序,按照字符编码逐位比较参数可以是一个匿名函数,也可以不传返回值:排序后的数组注意:原数组会改变 按数字大小比较:123arr.sort( function (a,b) &#123; return a-b; // 用c语言编写封装在底层的匿名函数,a&gt;b则换位,a&lt;b则不换位,排序&#125; ) 随机打乱数组:123arr.sort( function(a,b) &#123; return Math.random()-0.5 // 随机数大于0.5时不换位,小于0.5时换位,随机打乱&#125;) concat(arr)作用:用于连接数组,创建一个数组副本,将接收到的参数添加到这个副本末尾,最后返回新构建的数组参数:数组或元素返回值:连接后的数组注意:原数组不会改变123var arr = [1,2,3];arr.concat(arr); // [1,2,3,1,2,3]console.log(arr); // [1,2,3] slice(start[,end])作用:用于截取数组参数有两个: 开始截取的位置 结束截取的位置(不包含结束位置)返回值:返回新的截取后的数组注意:原数组不会改变只传一个参数则从开始位置截取到结束1234var arr = [1,2,3,4,5,6];arr.slice(1,3); // [2,3]arr.slice(1); // [2,3,4,5,6]console.log(arr); // [1,2,3,4,5,6] splice(start[,delete][,replace])作用:可以实现删除,插入和替换 删除:删除任意数量的项, 参数有两个: 开始删除的位置 要删除的项数123var arr = [1,2,3,4,5,6];arr.splice(0,2); // [1,2]console.log(arr); // [3,4,5,6] 插入:在指定位置插入任意数量的项 参数有三个: 起始位置 0(要删除的项数) 要插入的项123var arr = [3,4,5,6];arr.splice(0,0,1,2); // []console.log(arr); // [1,2,3,4,5,6] 替换:向指定位置插入任意数量的项,同时删除任意数量的项 参数有三个: 起始位置 要删除的项数 要插入的项123var arr = [1,2,3,4,5,6];arr.splice(2,2,7); // [3,4]console.log(arr); // [1,2,7,5,6] 返回值:删除的项构成的数组,如果没有删除项,返回空数组注意:原数组会改变 indexOf(ele[,start]),lastIndexOf(ele[,start])作用:从数组的开头向后查找元素(从数组的末尾向前查找元素)参数有两个: 要查找的项 查找起点的索引 返回值: 要查找的项在数组中的位置,如果没有,返回-1注意:原数组不改变,使用全等操作符比较123var arr = [1,2,3,4,5,6];arr.indexOf(3); // 2arr.indexOf(7); // -1 join(separator)作用:将数组中的每一项用连接符连接 转成字符串,undefined转化为空参数:连接符,默认用逗号分隔返回值:连接后的字符串注意:原数组不会改变12345function repeatString(str, n) &#123;return new Array(n + 1).join(str);&#125;console.log(repeatString("abc", 3)); // abcabcabcconsole.log(repeatString("Hi", 5)); // HiHiHiHiHi]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>javacript基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[字符串方法]]></title>
+    <url>%2F2017%2F02%2F21%2F%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%96%B9%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[charAt(index)作用:根据index下标在字符串中找对应的字符参数:索引值返回值:返回字符串下标为index的字符,如果不存在,则返回一个空字符串123var str = "hello world";str.charAt(2); // "l"str.charAt(15); // "" charCodeAt(index)作用:根据index下标找对应字符的字符编码参数:索引值返回值:返回字符串下标为index字符的字符编码12var str = "hello world";str.charCodeAt(2); //108 indexOf(substr[,start])作用:查找字符是否存在,如果存在,返回对应下标,不存在返回-1参数有两个: 查找的字符串 开始查找的位置,默认为0 如果start=str.length,返回-1,除非被查找的是一个空字符串,返回str.length1234567var str = "hello world";str.indexOf("l"); // 2str.indexOf("l",5); // 9str.indexOf("l",-1); // 2str.indexOf("l",15); // -1var empty = " ";empty.indexOf("",15); // 4 lastIndexOf()与index相似,但是从后往前找 toUpperCase()作用:将字符串转成大写,原字符串不变返回值:转换后的字符串12var str = "hello world";str.toUpperCase(); // "HELLO WORLD" toLowerCase()与toUpperCase()相似,但是将字符串转成小写 split([separator][,limit])作用:将字符串用分隔符转成数组,原字符串不变参数有两个: 可以是字符串,也可以是一个正则表达式,用来分隔的符号 指定数组大小 返回值:返回分隔后的数组12345var str = "hello world";str.split(); // ["hello world"]str.split(""); // ["h", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d"]str.split(" "); // ["hello", "world"]str.split("",5); //["h", "e", "l", "l", "o"] slice(start[,end])作用:截取字符串,原字符串不变参数有两个: 开始截取的位置 结束截取的位置(不包含结束的位置) 不支持参数颠倒,支持负数返回值:截取后的字符串1234var str = "hello world";str.slice(1,7); // "ello w"str.slice(4,-2); // "o wor"str.slice(7,1); // "" substring(start[,end])与slice类似,但是支持颠倒,不支持负数,传入负数认为是01234var str = "hello world";str.substring(1,7); // "ello w"str.substring(4,-2); // "hell"str.substring(7,1); // "ello w" substr(strt[,length])作用:截取字符串,start可以是负值,原字符串不变参数有两个: 开始截取的位置 截取的长度 返回值:截取后的字符串123var str = "hello world";str.substr(2,2); // "ll"str.substr(-5,2); // "wo" trim()作用:删除字符串前置及后置的所有空格,原字符串不变返回值:截取后的字符串12var str = " helloworld ";str.trim(); // "helloworld" trim方法的实现123456789function trim(str) &#123; if(typeof str !== "string") &#123; return str; &#125; if(str.trim) &#123; return str.trim(); &#125; return str.replace(/^\s+|\s$/g,"");&#125; match(regexp)作用:模式匹配字符串中的指定字符,与正则表达式的exec()方法相同参数:正则表达式返回值:包含匹配结果的数组,如果没有匹配项,返回null1234var str = "hello world hello";str.match(/hello/); // ["hello"]str.match(/hello/g); // ["hello","hello"]str.match(/ai/); // null search(regexp)作用:查找字符串中第一个匹配项的索引参数:正则表达式返回值:返回字符串中第一个匹配项的索引123var str = "hello world";str.search(/ello/); // 1str.search(/a/); // -1 replace()作用:替换指定字符,原字符串不变参数有两个: 正则表达式或字符串 用来替换的字符串或处理函数 返回值:替换后的字符串123var str = "hello world hello";str.replace("hello","bye"); // "bye world hello"str.replace(/hello/g,"bye"); // "bye world bye"]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>javacript基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Date对象]]></title>
+    <url>%2F2017%2F02%2F20%2FDate%E5%AF%B9%E8%B1%A1%2F</url>
+    <content type="text"><![CDATA[Date对象:javascript内置对象,操作日期和事件,只能通过方法操作 new Date()返回一个表示本地日期和事件的Date对象1var mydate = new Date() new Date(miliseconds)返回一个叠加后的Date对象12var mydate = new Date(1000*60*1)console.log(mydate); 起点时间为1970/01/01 08:00:00前进一分钟 new Date(dateStr)把字符串转换为Date对象返回一个转换后的Date对象1234567var mydate = new Date("2017/06/24"); // 省略时间,返回date对象为00:00:00console.log(mydate); // 2017/06/24 00:00:00 var mydate = new Date("2017/06/24 12:00:00")console.log(mydate); // 2017/06/24 12:00:00var mydate = new Date("2017-06-24") // 省略时间会加上本地时间,如果指定时间,则返回指定时间 console.log(mydate) // 2017/06/24 08:00:00 参数new Date(year,month,opt_day,opt_hours,opt_minutes,opt_seconds,opt_miliseconds)根据参数返回一个date对象1var mydate = new Date(2017,05); //2017年6月,月份0到11开始 如果月份数字为12,则表示第13个月,跳转到次年1月 Date对象中的方法: getFullYear() getMonth() getDate() getHours() getMinutes() getSeconds() getMilliseconds() getDay() getTime() Date.now():时间戳,返回当前日期时间与1970/01/01 00:00:00之间的毫秒值]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>javacript基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[对象]]></title>
+    <url>%2F2017%2F02%2F20%2F%E5%AF%B9%E8%B1%A1%2F</url>
+    <content type="text"><![CDATA[js中的对象 无序的属性和方法的集合 属性可以包含基本值，对象或函数，可以把js中的对象想象成键值对，值可以是数据或函数 键值对是一个常用的数据结构概念，又称为字典或映射（map），以空间换时间，提高查找效率 数组是一种特殊对象，他的键名是有序的索引序列 对象的动态特性对象创建完成后,可以随时为对象新增成员(属性和方法),这种特性就是对象的动态特性 访问对象中的属性 对象.属性=值 对象[属性]=值 ###this在对象的方法中this始终代表当前这个对象，当前函数或方法被谁调用，this就指向谁。在全局中调用，指的是window 在函数调用模式中详解this的指向问题 函数和方法的区别函数和方法本质上并没有太大区别 函数直接调用的是函数 attack() 方法通过对象调用的是方法 hero.attack() 构造函数构造一个对象并返回的函数用来初始化对象构造函数的命名:第一个字母要大写 构造函数执行过程 内存中开辟空间，使用new关键字创建了一个对象,这个对象没有属性和方法 调用构造函数,将构造函数内部的this指向刚才new创建出来的对象 执行构造函数中的代码,通过this为刚才创建的对象新增方法 默认自动返回刚刚创建的对象 把Object视为一个构造函数，本质是一个函数，目的是为了创建新对象，为新对象进行初始化（设置对象属性）var hero=new Object()new后面调用函数称为构造函数 注意 如果自己手动写了return 如果return的是值类型的数据,那么不会对默认值产生影响 如果return的值是引用类型的数据,返回的是return后面的数据,而不是new创建的对象 如果把构造函数当做普通函数调用 函数中的this指向window,通过this添加的属性和方法都添加给了window,返回值按照普通函数的规则理解 对象字面量对象字面量提供了一种非常方便的创建新对象值的表示法1234var stooge = &#123; “first-name&quot;:&quot;Jerome&quot;, &quot;last-name&quot;:&quot;howard&quot; &#125; 如果属性名是一个合法的js标示符且不是保留字，并不强制要求用引号括住属性名，用逗号分隔多个键值对。 所有通过对象字面量创建的对象都连接到Object.prototype这个js标准中的对象 在继承中做详解 遍历对象中的属性12345var obj=new Object（）；for(var key in obj)&#123;console.log(key);console.log(obj[key]); //遍历属性的值&#125; 有些系统提供的对象的属性和方法无法遍历，原因是属性和方法被设置为不可遍历]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>javascript基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[函数]]></title>
+    <url>%2F2017%2F02%2F19%2F%E5%87%BD%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[函数的概念编程就是把需求分解成一组函数与数据结构的能力函数定义一次，可以调用多次函数就是一个功能的封装体，定义功能通常需要两个明确 功能的结果 功能实现中的参与运算的未知的内容（参数）1234function name（argument）&#123; // code here return 返回值 //如果没有具体的返回值，return省略&#125; 函数返回值return默认返回undefinedreturn后面可以返回任何数据类型return后面的代码不执行了，直接返回值，终止函数执行 函数名和参数：函数是对象，函数名是指针函数名就等于整个函数加载函数时,只加载函数名,不加载函数体 只要使用函数的名称，就是对函数的调用,函数的名字只是指向函数的指针 函数中有一个对传入的实参进行存储的集合arguments，是类数组，具有长度属性，也有下标，但是没有数组方法 形参相当于局部变量 123function demo()&#123;...&#125;var b=demo(); //demo函数运行，并将返回的结果赋值给bvar b=demo ; //demo本身是一个函数名，而函数本身在js中就是对象。demo就是这个函数对象的引用，将demo这个引用的地址赋值给b，这时b也指向了这个函数对象 相当于这个函数对象有两个函数名，会将该函数对象的字符串表现形式打印出来，就是该函数的代码定义格式 arguments在用户传入参数个数不确定时，使用arguments, 函数被调用时,传入函数的所有实参,都会被存入arguments这个伪数组 arguments对象的属性:callee该属性是一个指针，指向拥有这个arguments对象的函数(一般在递归中使用) arguments对象的属性:caller保存着调用当前函数的引用,如果在全局作用域中调用当前函数,值为null 函数表现形式： 动态函数：使用的是js中内置的一个对象，Function (用的不多)123var add=new Function("x,y","var sum; sum=x+y; return sum;");（内容可变）var result=add(4,8); 参数列表，函数体都通过字符串动态指定 匿名函数：没有函数名，用来简写 函数的调用：方法调用模式，函数调用模式，构造器调用模式，apply调用模式 方法调用模式： 当函数被保存为一个对象的属性时，称为一个方法。 this被绑定到该对象， 函数调用模式： 当函数并非一个对象的属性时，那么被当做一个函数调用 this被绑定到全局对象， 在this指向做详细解释 重载：在其他语言中有重载：函数名字相同，但是参数个数不同javascript中没有重载，下面的相同名称函数会把上面的覆盖在javascript中不允许出现同名的函数在js中可以通过判断传入参数的个数来模拟重载 例:12345switch(arguments.length)&#123; case 1: case 2: case 3:&#125;]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>javacript基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[数据类型转换]]></title>
+    <url>%2F2017%2F02%2F18%2F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%2F</url>
+    <content type="text"><![CDATA[转换成字符串：几乎每个值都有toString()方法对于undefined和null要使用String()法toAtring携带的参数表示输出对应进制的值toString() 10进制toString(8) 8进制 使用拼接字符串：拼接符：+ 转成数值类型： Number()要转换的字符串中有一个不是数值的字符，返回NaN, 如果是空，返回0。 parseInt()如果第一个字符是数字会解析直到遇到非数字结束，如果第一个字符不是数字或者符号就返回NaN，如果第一个字符是数字，则继续解析到结束或第一个非数字。 将小数取整。 parseInt(”a“，16)指定按16进制解析。 parseFloat()parseFloat（m）.toFixed（n）保留n位小数 转换成布尔类型： Boolean()除了false，”“，0，NaN,undefined,其他任何值都会被转为true ！！string先执行后一个取反 隐式转换： 转number加减乘除以及取余都可以让数据转换成number 转stringa+”” 转boolean！！a 基本类型的隐藏机制：str是string(基本类型)，本身是没有方法的。 当尝试把基本类型的str当做对象一样访问时，例如：str.length解释器会创建一个临时的包装对象，伪代码:123[[tempObj]] = new String(str);[[tempObj]].length; // 返回具体的length;delete [[tempObj]]; // 销毁临时对象 重复访问str.length会重复创建这个临时对象。所以str.t赋值可以成功，但再次访问str.t返回undefined，因为每次创建的临时包装对象都是不同的。 valueOf():返回对象的字符串,数值或布尔值表示(返回原始值),通常与toString()方法的返回值相同 toString():返回对象的字符串表示 注意在做==比较时,数据都会转成number类型再进行比较如: [ ] == ! [ ]左侧[ ]: 数组不是基本类型，需要先 ToPrimitive([ ])转换成原始类型， 即 “”。 接下来 ToNumber(“”)， 即 0。 右侧![ ]: ![ ]， 即 false。 接下来 ToNumber(false)， 即 0。所以 0 == 0，[ ] == ![ ] 为 true。]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>javacript基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[循环语句和流程控制]]></title>
+    <url>%2F2017%2F02%2F17%2F%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E5%92%8C%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5%2F</url>
+    <content type="text"><![CDATA[while123while（condition/boolean）&#123; //code here&#125; while循环的执行流程： 当代码执行到while时，会先判断条件是否为true，如果true执行代码块，再次回到while中判断 do..while循环会首先执行一次,再判断条件是否为true1234do&#123; // code here&#125;while(condition) for当程序运行到for的时候会声明一个变量，并且赋值，判断变量是否满足判断条件，如果满足，执行循环代码。123for(var i=0;i&lt;condition;i++) &#123; // code here&#125; for infor in 用于遍历数组或对象123for(var k in obj) &#123; // code here&#125; break:在循环内部结束循环，执行循环之后的代码 continue:结束本次循环，继续运行下一次循环 流程控制if else123456if(condition/boolean) &#123; // code here&#125;else&#123; // code here&#125; if后面接有判断条件，else后面没有接判断条件if和else只能执行一个 if elseif else12345678if（）&#123; // code here&#125;eseif() &#123; // code here&#125;else&#123; // code here&#125; 在这个结构中elseif可以用无数个整个结构只会执行一个代码段最后的else可以不写 switch case判断多个可能出现的值1234567891011switch（condition）&#123; case val： code part1 break； case val： code part2 ... ... default： code partn&#125; switch判断相等时用的是全等 case结构后面跟具体数值 case结构可以无数 所有case 都不满足，执行defalt中的内容 default可以不写，也可以没有条件 try catchtry…catch可以测试代码中的错误，try包含需要运行(可能出错)的代码，catch包含发生错误时运行的代码,特别耗性能,尽少使用123456789try&#123; // code here&#125;catch（e）&#123; // deal with error&#125;finally&#123; //无论是否发生异常都会执行的代码 //一般在finally中写释放资源的操作(后端)&#125; throwthrow声明作用是创建exception（异常），可以与try…catch配合使用，精确控制错误信息1throw（exception）]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>javacript基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[变量]]></title>
     <url>%2F2017%2F02%2F16%2F%E5%8F%98%E9%87%8F%2F</url>
     <content type="text"><![CDATA[变量的作用用来存储可变化的数据,属于javascript中的基本类型 语法及规范变量的声明var 变量名 变量的赋值变量名 = 要赋值的数据; 等号右边先计算,从左向右计算 变量取名规范 变量名取值范围:0-9,a-z,A-Z,_,$,并且数字不能作为变量名的开头 变量名区分大小写,不能使用关键字和保留字,变量名最长不能超过255个字符 两个变量相加 两个都是number类型,作用是相加 两个都是string类型,作用是连接 一个number,一个string,连接 变量作用域 在脚本片段中的变量,是全局变量 在函数中的变量,是局部变量 在函数中没有用var声明的变量,也是全局变量]]></content>
       <categories>
         <category>javascript</category>
       </categories>
       <tags>
-        <tag>javacript</tag>
+        <tag>javacript基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[javascript代码书写]]></title>
+    <url>%2F2017%2F02%2F15%2Fjavascript%E4%BB%A3%E7%A0%81%E4%B9%A6%E5%86%99%2F</url>
+    <content type="text"><![CDATA[书写位置: 可以放在head标签中的样式下面 可以放在body下面 可以放在外链接中 当页面载入时,会执行位于body的javascript代码当js被调用时,会执行位于head的javascript代码 书写规则: 对换行和缩进不敏感 如果代码末尾不加分号,必须要换行,不换行会报错 javascript代码执行顺序:从上到下(但是有预解析),遇到错误后会停止执行当前代码段,但不影响后一个script标签中的代码 注释: //单行注释 /**/多行注释 兼容性:如果浏览器不支持script标签,则可以使用noscript标签,浏览器会显示noscript标签中的内容]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>javacript基础</tag>
       </tags>
   </entry>
   <entry>
@@ -30,7 +228,7 @@
         <category>javascript</category>
       </categories>
       <tags>
-        <tag>javacript</tag>
+        <tag>javacript基础</tag>
       </tags>
   </entry>
   <entry>
@@ -41,7 +239,7 @@
         <category>javascript</category>
       </categories>
       <tags>
-        <tag>javacript</tag>
+        <tag>javacript基础</tag>
       </tags>
   </entry>
 </search>
